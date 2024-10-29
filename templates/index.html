@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="text-center" style="margin-top: 2em;">
+    <h1 style="color: #163269;">Detect Traffic Signs with Deep Learning</h2>
+    <p style="color: #163269;">Following service is a prediction provider for traffic signs.</p>
+    <p style="color: #163269;">Here you can choose up to 3 models for predictions.</p>
+    <form id="upload-file" method="post" enctype="multipart/form-data" class="mt-4">
+        <label for="imageUpload" class="upload-btn">Upload image</label>
+        <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
+
+        <!-- выпадашка с выбором модели -->
+        <select name="model" id="modelSelect" class="form-control mt-3" style="max-width: 310px; margin: 0 auto;" required>
+            <option value="cnn">CNN (Convolutional Neural Network)</option>
+            <option value="mlp">MLP (Multilayer Perceptron)</option>
+            <option value="rfc">RFC (Random Forest Classifier)</option>
+        </select>
+    </form>
+
+    <div class="image-section text-center" style="display:none; margin-top: 20px;">
+        <div class="preview-container mx-auto">
+            <div id="imagePreview"></div>
+        </div>
+        <button type="button" class="btn btn-primary btn-lg mt-3" id="btn-predict">Predict</button>
+    </div>
+
+    <div class="loading-spinner mx-auto" style="display:none; margin-top: 20px;"></div>
+
+    <h3 id="result" class="text-center mt-3 mb-4" style="margin-top: 15px;">
+        <span></span>
+    </h3>
+</div>
+
+{% endblock %}
